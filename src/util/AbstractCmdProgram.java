@@ -26,12 +26,18 @@ public abstract class AbstractCmdProgram {
         }
     }
 
+    protected void doWork(String[] args) throws FileNotFoundException {}
+
     private void init() throws IOException {
         initInputFileName();
         initOutputFileName();
         initInputFileStream();
         initOutputFileStream();
         initDescription();
+    }
+
+    protected void initDescription() {
+        description = "No description";
     }
 
     protected void initInputFileName() {
@@ -56,17 +62,11 @@ public abstract class AbstractCmdProgram {
         inputStream = new DataInputStream(Files.newInputStream(path));
     }
 
-    protected void doWork(String[] args) throws FileNotFoundException {}
-
     public final String getDescription() {
         return description;
     }
 
     private void printDescription() {
         System.out.println(description);
-    }
-
-    protected void initDescription() {
-        description = "No description";
     }
 }
