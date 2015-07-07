@@ -1,29 +1,33 @@
 package util;
 
-import java.io.DataInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 public abstract class AbstractCmdProgram {
     protected String description;
-    protected DataInputStream inputStream;
+    protected Scanner inputStream;
     protected PrintStream outputStream;
     protected String inputFileName = "";
     protected String outputFileName = "";
 
     public final void run(String[] args) throws IOException {
+        long startTime;
+        long endTime;
         init();
         printDescription();
+        startTime = System.currentTimeMillis();
         try {
             doWork(args);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
+        endTime = System.currentTimeMillis();
+        System.out.println("Work done for " + (endTime - startTime) + " milli's");
     }
 
     protected void doWork(String[] args) throws FileNotFoundException {}
@@ -59,11 +63,7 @@ public abstract class AbstractCmdProgram {
             throw new FileNotFoundException("Input file " + inputFileName + " not found");
         }
 
-        inputStream = new DataInputStream(Files.newInputStream(path));
-    }
-
-    public final String getDescription() {
-        return description;
+        inputStream = new Scanner(Files.newInputStream(path), String.valueOf(StandardCharsets.ISO_8859_1));
     }
 
     private void printDescription() {

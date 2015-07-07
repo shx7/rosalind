@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        AbstractCmdProgram cmdProgram = new dna.Main();
+        AbstractCmdProgram cmdProgram = new gc.Main();
         try {
             cmdProgram.run(args);
         } catch (IOException e) {

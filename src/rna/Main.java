@@ -3,24 +3,19 @@ package rna;
 import util.AbstractCmdProgram;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class Main extends AbstractCmdProgram{
     @Override
     protected void doWork(String[] args) throws FileNotFoundException {
         char x;
 
-        try {
-            while (inputStream.available() > 0) {
-                x = (char)inputStream.read();
-                if (x == 'T') {
-                    outputStream.append('U');
-                } else {
-                    outputStream.append(x);
-                }
+        while (inputStream.hasNext()) {
+            x = (char)inputStream.nextByte();
+            if (x == 'T') {
+                outputStream.append('U');
+            } else {
+                outputStream.append(x);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
