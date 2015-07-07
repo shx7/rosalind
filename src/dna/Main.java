@@ -10,31 +10,27 @@ public class Main extends AbstractCmdProgram {
     protected void doWork(String[] args) throws FileNotFoundException {
         char x;
         int adenineCounter = 0, cytosineCounter = 0, guanineCounter = 0, thymineCounter = 0;
-        try {
-            while (inputStream.available() > 0) {
-                x = (char)inputStream.readByte();
-                switch (x) {
-                    case 'A':
-                        adenineCounter++;
-                        break;
+        while (inputStream.hasNext()) {
+            x = (char)inputStream.nextByte();
+            switch (x) {
+                case 'A':
+                    adenineCounter++;
+                    break;
 
-                    case 'C':
-                        cytosineCounter++;
-                        break;
+                case 'C':
+                    cytosineCounter++;
+                    break;
 
-                    case 'T':
-                        thymineCounter++;
-                        break;
+                case 'T':
+                    thymineCounter++;
+                    break;
 
-                    case 'G':
-                        guanineCounter++;
-                        break;
-                }
+                case 'G':
+                    guanineCounter++;
+                    break;
             }
-            System.out.println();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        System.out.println();
         outputStream.println(adenineCounter + " " + cytosineCounter + " " +
         guanineCounter + " " + thymineCounter);
     }
