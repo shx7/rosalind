@@ -64,14 +64,4 @@ public class Main extends AbstractCmdProgram {
                 "The probability that two randomly selected mating organisms will produce an individual possessing\n" +
                 "a dominant allele (and thus displaying the dominant phenotype). Assume that any two organisms can mate.";
     }
-
-    @Override
-    protected void initInputFileName() {
-        inputFileName = "src/iprb/input.txt";
-    }
-
-    @Override
-    protected void initOutputFileName() {
-        outputFileName = "src/iprb/output.txt";
-    }
 }

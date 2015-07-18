@@ -45,11 +45,11 @@ public abstract class AbstractCmdProgram {
     }
 
     protected void initInputFileName() {
-        inputFileName = "";
+        inputFileName = "src/" + this.getClass().getPackage().getName() + "/input.txt";
     }
 
     protected void initOutputFileName() {
-        outputFileName = "";
+        outputFileName ="src/" + this.getClass().getPackage().getName() + "/output.txt";
     }
 
     private void initOutputFileStream() throws IOException {
