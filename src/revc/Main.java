@@ -9,10 +9,9 @@ public class Main extends AbstractCmdProgram {
     @Override
     protected void doWork(String[] args) throws FileNotFoundException {
         Stack<Character> stack = new Stack<>();
-        char nt;
         char complementNt;
-        while (inputStream.hasNext()) {
-            nt = (char)inputStream.nextByte();
+        String tmp = inputStream.nextLine();
+        for (Character nt : tmp.toCharArray()) {
             switch (nt) {
                 case 'A':
                     complementNt = 'T';
